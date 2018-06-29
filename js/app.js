@@ -31,14 +31,14 @@ Enemy.prototype.update = function(dt) {
         this.speed = 100 + Math.floor(Math.random() * 512);
     }
 
-    // // Check for collision between player and enemies
-    // if (player.x < this.x + 60 &&
-    //     player.x + 37 > this.x &&
-    //     player.y < this.y + 25 &&
-    //     30 + player.y > this.y) {
-    //     player.x = 200;
-    //     player.y = 380;
-    // }
+    // Check for collision between player and enemies
+    if (player.x < this.x + 60 &&
+        player.x + 37 > this.x &&
+        player.y < this.y + 25 &&
+        30 + player.y > this.y) {
+        player.x = 200;
+        player.y = 380;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -81,13 +81,13 @@ Player.prototype.handleInput = function(allowedKeys) {
         case "left":
             //check for wall, otherwise move left
             if (this.x > 0) {
-                this.x -= 101;
+                this.x -= 51;
             }
             break;
         case "right":
             //check for wall, otherwise move right
             if (this.x < 402) {
-                this.x += 101;
+                this.x += 51;
             }
             break;
         case "up":
@@ -96,13 +96,13 @@ Player.prototype.handleInput = function(allowedKeys) {
             if (this.y < 0) {
                 this.success();
             } else {
-                this.y -= 83;
+                this.y -= 41.5;
             }
             break;
         case "down":
             //check for bottom, otherwise move down
             if (this.y < 300) {
-                this.y += 83;
+                this.y += 41.5;
             }
             break;
     }
