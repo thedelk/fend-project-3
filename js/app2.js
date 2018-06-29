@@ -1,3 +1,8 @@
+// TO-DO
+// pick up stuff
+// character select
+
+// Default sprite constructor
 class Sprite {
   constructor(x, y, speed) {
     this.x = x;
@@ -11,6 +16,7 @@ class Sprite {
   };
 };
 
+// Sprite subclass for enemies
 class SpriteEnemy extends Sprite {
   constructor(x, y, speed) {
     super(x, y, speed);
@@ -37,6 +43,7 @@ class SpriteEnemy extends Sprite {
   };
 };
 
+// Sprite subclass for player
 class SpritePlayer extends Sprite {
   constructor(x, y, speed) {
     super(x, y, speed);
@@ -78,15 +85,18 @@ class SpritePlayer extends Sprite {
   }
 };
 
+// Instantiation
 let player = new SpritePlayer(200, 380, 50);
 let allEnemies = [];
 
+// Creating enemies
 for (var i = 0; i < 3; i++) {
   const startSpeed = 20 * Math.floor(Math.random() * 10 + 1);
   //enemys start off canvas (x = -100) at the following Y positions: 60, 145, 230
   allEnemies.push(new SpriteEnemy(-100, 60 + (85 * i), startSpeed));
 }
 
+// Listen for keypress to control character
 document.addEventListener('keydown', function (e) {
   var allowedKeys = {
     37: 'left',

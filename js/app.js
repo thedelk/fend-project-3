@@ -48,8 +48,6 @@ Enemy.prototype.render = function() {
 
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 //                              Player stuff
@@ -108,14 +106,6 @@ Player.prototype.handleInput = function(allowedKeys) {
     }
 };
 
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//                              Instantiation
-//
-///////////////////////////////////////////////////////////////////////////////
-
 let player = new Player(200, 380, 50);
 let allEnemies = [];
 // var enemy;
@@ -132,18 +122,6 @@ for (var i = 0; i < 3; i++) {
     //enemys start off canvas (x = -100) at the following Y positions: 60, 145, 230
     allEnemies.push(new Enemy(-100, 60 + (85 * i), startSpeed));
 }
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//                              Other stuff
-//
-///////////////////////////////////////////////////////////////////////////////
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
