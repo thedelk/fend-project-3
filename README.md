@@ -5,6 +5,7 @@
 - [Toadder](#toadder)
   - [Contents](#contents)
   - [Instructions](#instructions)
+    - [Using Locally](#using-locally)
   - [Dependencies](#dependencies)
   - [History](#history)
   - [Rubric](#rubric)
@@ -14,6 +15,13 @@
 A simple recreation of a classic arcade game loved by many!
 
 To get started, open [the GitHub pages site for this repo](https://thedelk.github.io/fend-project-3/) and try to make it across the street!
+
+### Using Locally
+
+If you want to play around with the code, feel free to clone your own copy!
+
+1. Download or clone the repository to your local environment
+2. Open `index.html` in a browser to play
 
 ## Dependencies
 
