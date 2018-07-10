@@ -8,7 +8,7 @@
 //  Purpose.................Udacity Front-End Nanodegree Program
 //                          Project 3
 //  Creator.................Ryan Delk
-//  Last Change.............July 9, 2018
+//  Last Change.............July 10, 2018
 //
 //
 //
@@ -35,13 +35,13 @@ class Sprite {
     this.y = y;
     this.speed = speed;
     this.sprite = '';
-  };
+  }
 
   // Draw the sprite on the canvas
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  };
-};
+  }
+}
 
 // Sprite subclass for enemies
 class SpriteEnemy extends Sprite {
@@ -50,7 +50,7 @@ class SpriteEnemy extends Sprite {
   constructor(x, y, speed) {
     super(x, y, speed);
     this.sprite = 'images/enemy-bug.png';
-  };
+  }
 
   // Control changes to the enemy when stuff happens
   update(dt) {
@@ -70,8 +70,8 @@ class SpriteEnemy extends Sprite {
       player.x = 200;
       player.y = 380;
     }
-  };
-};
+  }
+}
 
 // Sprite subclass for player
 class SpritePlayer extends Sprite {
@@ -80,16 +80,16 @@ class SpritePlayer extends Sprite {
   constructor(x, y, speed) {
     super(x, y, speed);
     this.sprite = 'images/char-boy.png';
-  };
+  }
 
   // Default function for updating
-  update() {};
+  update() {}
 
   // When the player reaches the water, speed up enemies
   greatSuccess() {
     speedUp += 25;
     this.resetPlayer();
-  };
+  }
 
   // Start over once the player reaches the water
   resetPlayer() {
@@ -97,7 +97,7 @@ class SpritePlayer extends Sprite {
     this.startingY = 380;
     this.x = this.startingX;
     this.y = this.startingY;
-  };
+  }
 
   // Player controls
   handleInput(allowedKeys) {
@@ -138,7 +138,7 @@ class SpritePlayer extends Sprite {
         break;
     }
   }
-};
+}
 
 
 
@@ -148,9 +148,6 @@ class SpritePlayer extends Sprite {
 
 // Create a new player sprite
 let player = new SpritePlayer(200, 380, 50);
-
-// Initialize player score
-let playerScore = 0;
 
 // Speed variable; increases each time the player makes it across
 let speedUp = 25;
@@ -166,7 +163,7 @@ for (var i = 0; i < 3; i++) {
 
   // Push each new enemy to the array
   allEnemies.push(new SpriteEnemy(-100, 60 + (85 * i), startSpeed));
-};
+}
 
 // Listen for keypress to control character
 document.addEventListener('keydown', function (e) {
