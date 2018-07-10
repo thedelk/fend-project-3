@@ -18,13 +18,6 @@
 //
 //
 //
-//  NOTES
-//    To jump to a specific section, search (CTRL + F) for the
-//    section's primary heading number, followed by its
-//    subsection's letter.
-//
-//    e.g. Search for "2b" to go to the Squares/Styling section
-//
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -66,7 +59,7 @@ class SpriteEnemy extends Sprite {
     // Reset enemy positions and speed when they reach the edge
     if (this.x > 550) {
       this.x = -100;
-      this.speed = 100 + Math.floor(Math.random() * 512);
+      this.speed = speedUp + Math.floor(Math.random() * 512);
     }
 
     // Collision detection
@@ -92,29 +85,51 @@ class SpritePlayer extends Sprite {
   // Default function for updating
   update() {};
 
+  // When the player reaches the water, speed up enemies
+  greatSuccess() {
+    speedUp += 25;
+    this.resetPlayer();
+  };
+
+  // Start over once the player reaches the water
+  resetPlayer() {
+    this.startingX = 200;
+    this.startingY = 380;
+    this.x = this.startingX;
+    this.y = this.startingY;
+  };
+
   // Player controls
   handleInput(allowedKeys) {
     switch (allowedKeys) {
+
+      // Left arrow key pressed
       case "left":
-        // Don't allow movement past right edge
+        // Don't allow movement past left edge
         if (this.x > 0) {
           this.x -= 101;
         }
         break;
+
+      // Right arrow key pressed
       case "right":
-        // Don't allow movement past left edge
+        // Don't allow movement past right edge
         if (this.x < 402) {
           this.x += 101;
         }
         break;
+
+      // Up arrow key pressed
       case "up":
         // Don't allow movement past top edge
         if (this.y < 0) {
-          this.success();
+          this.greatSuccess();
         } else {
           this.y -= 83;
         }
         break;
+
+      // Down arrow key pressed
       case "down":
         // Don't allow movement past bottom edge
         if (this.y < 350) {
@@ -134,6 +149,12 @@ class SpritePlayer extends Sprite {
 // Create a new player sprite
 let player = new SpritePlayer(200, 380, 50);
 
+// Initialize player score
+let playerScore = 0;
+
+// Speed variable; increases each time the player makes it across
+let speedUp = 25;
+
 // Initialize empty array to hold enemies
 let allEnemies = [];
 
@@ -141,7 +162,7 @@ let allEnemies = [];
 for (var i = 0; i < 3; i++) {
 
   // Set speed at which enemies will travel
-  const startSpeed = 20 * Math.floor(Math.random() * 10 + 1);
+  const startSpeed = speedUp * Math.floor(Math.random() * 10 + 1);
 
   // Push each new enemy to the array
   allEnemies.push(new SpriteEnemy(-100, 60 + (85 * i), startSpeed));
